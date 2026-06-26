@@ -152,20 +152,20 @@ def build(ctx: Context) -> None:
     )
 
 
-@duty
-def publish(ctx: Context) -> None:
-    """Publish source and wheel distributions to PyPI."""
-    if not Path("dist").exists():
-        ctx.run("false", title="No distribution files found")
-    dists = [str(dist) for dist in Path("dist").iterdir() if dist.suffix in (".gz", ".whl")]
-    ctx.run(
-        tools.twine.upload(*dists, skip_existing=True),
-        title="Publishing distributions to PyPI",
-        pty=PTY,
-    )
+# @duty
+# def publish(ctx: Context) -> None:
+#     """Publish source and wheel distributions to PyPI."""
+#     if not Path("dist").exists():
+#         ctx.run("false", title="No distribution files found")
+#     dists = [str(dist) for dist in Path("dist").iterdir() if dist.suffix in (".gz", ".whl")]
+#     ctx.run(
+#         tools.twine.upload(*dists, skip_existing=True),
+#         title="Publishing distributions to PyPI",
+#         pty=PTY,
+#     )
 
 
-@duty(post=["build", "publish", "docs-deploy"])
+@duty(post=["build", "docs-deploy"])
 def release(ctx: Context, version: str = "") -> None:
     """Release a new Python package.
 
