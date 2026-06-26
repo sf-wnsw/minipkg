@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
+## [0.3.0](https://github.com/sf-wnsw/minipkg/releases/tag/0.3.0) - 2026-06-26
+
+<small>[Compare with 0.2.1](https://github.com/sf-wnsw/minipkg/compare/0.2.1...0.3.0)</small>
+
+### Features
+
+- remove ruff and type  quality checks ([9846d14](https://github.com/sf-wnsw/minipkg/commit/9846d14c72143db1ad00b0cb367545504e343600) by J-M).
+
 ## [0.2.1](https://github.com/sf-wnsw/minipkg/releases/tag/0.2.1) - 2026-06-26
 
 <small>[Compare with 0.2.0](https://github.com/sf-wnsw/minipkg/compare/0.2.0...0.2.1)</small>
