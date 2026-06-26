@@ -13,11 +13,11 @@ This is a template, or rather an example, for developers, not an end user produc
 
 This package was created from the template [copier-uv](https://pawamoy.github.io/copier-uv) which comes with opinionated aspects for the workflow of a package development. While opinionated for a good reason, the water mark is high to comply with expectations in terms of unit tests, syntax, etc.
 
-This repository will gradually strip down some aspects to a lightweight template, while keeping the packaging working.
-
-We will probably assume we keep [`uv`](https://docs.astral.sh/uv/) to at least build the package.
+The sections below log the stripping out of features down the smaller template you are probably seeing here. We will probably assume we keep [`uv`](https://docs.astral.sh/uv/) to at least build the package.
 
 ## Stripping things out successively
+
+This repository has gradually stripped down some aspects to a lightweight template, while keeping the packaging working.
 
 Various upcoming commits will strip down the following items, a priori. We will commit at changes that still build what remains.
 
@@ -248,6 +248,17 @@ head CHANGELOG.md
 make release version=0.4.1
 ```
 
+Now at https://github.com/sf-wnsw/minipkg/tree/9d01d20641c37c0e06822ba27e9a4349e3c61673
+
 ### versioning and changelog
 
 Actually, I think I will not remove this automation. It is handy if not without minor idiosyncracies and mishaps, but much better than manual (mis)management of version numbers.
+
+### Remaining stuff to strip out
+
+We remove the "funding" stuff, which we cannot easily use anyway as organisations.
+
+We are left with some issues templates under `.github/ISSUE_TEMPLATE`. You can do without, but really, this is handy. the `tests` folder is not used by the workflow, but let's keep stubs, there are limits to our decay. `scripts/gen_credits.py` probably cannot work anymore. I think this is used to scan dependencies licencing and give credits in the HTML doc.
+
+vscode templated files under `config/vscode` still refer to now defunct features for testing/checking code/ruff integration and settings.
+
