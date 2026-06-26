@@ -36,9 +36,6 @@ Documentation = "https://sf-wnsw.github.io/minipkg"
 Changelog = "https://sf-wnsw.github.io/minipkg/changelog"
 Repository = "https://github.com/sf-wnsw/minipkg"
 Issues = "https://github.com/sf-wnsw/minipkg/issues"
-Discussions = "https://github.com/sf-wnsw/minipkg/discussions"
-Gitter = "https://gitter.im/sf-wnsw/minipkg"
-Funding = "https://github.com/sponsors/jmp75"
 
 [project.scripts]
 minipkg = "minipkg:main"
