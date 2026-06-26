@@ -52,7 +52,6 @@ getter = "scripts.get_version:get_version"
 excludes = ["**/.pytest_cache"]
 source-includes = [
     "config",
-    "docs",
     "scripts",
     "share",
     "tests",
@@ -88,15 +87,6 @@ ci = [
     "types-markdown>=3.6",
     "types-pyyaml>=6.0",
 ]
- docs = [
-    "ghp-import>=2.1",
-    "markdown-callouts>=0.4",
-    "markdown-exec>=1.8",
-    "mkdocstrings[python]>=0.29",
-    # YORE: EOL 3.10: Remove line.
-    "tomli>=2.0; python_version < '3.11'",
-    "zensical>=0.0.21",
-]
 
 [tool.uv]
-default-groups = ["maintain", "ci", "docs"]
+default-groups = ["maintain", "ci"]

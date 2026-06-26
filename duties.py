@@ -49,7 +49,8 @@ def changelog(ctx: Context, bump: str = "") -> None:
     ctx.run(tools.yore.check(bump=bump or _get_changelog_version()), title="Checking legacy code")
 
 
-@duty(pre=["check-quality", "check-types", "check-docs", "check-api"])
+# @duty(pre=["check-quality", "check-types", "check-docs", "check-api"])
+@duty(pre=["check-quality", "check-types", "check-api"])
 def check(ctx: Context) -> None:
     """Check it all!"""
 
@@ -63,13 +64,13 @@ def check_quality(ctx: Context) -> None:
     )
 
 
-@duty(nofail=PY_VERSION == PY_DEV)
-def check_docs(ctx: Context) -> None:
-    """Check if the documentation builds correctly."""
-    ctx.run(
-        tools.zensical.build(strict=True),
-        title=pyprefix("Building documentation"),
-    )
+# @duty(nofail=PY_VERSION == PY_DEV)
+# def check_docs(ctx: Context) -> None:
+#     """Check if the documentation builds correctly."""
+#     ctx.run(
+#         tools.zensical.build(strict=True),
+#         title=pyprefix("Building documentation"),
+#     )
 
 
 @duty(nofail=PY_VERSION == PY_DEV)
@@ -97,39 +98,39 @@ def check_api(ctx: Context, *cli_args: str) -> None:
     )
 
 
-@duty
-def docs(ctx: Context, *cli_args: str, host: str = "127.0.0.1", port: int = 8000) -> None:
-    """Serve the documentation (localhost:8000).
+# @duty
+# def docs(ctx: Context, *cli_args: str, host: str = "127.0.0.1", port: int = 8000) -> None:
+#     """Serve the documentation (localhost:8000).
 
-    Parameters:
-        host: The host to serve the docs from.
-        port: The port to serve the docs on.
-    """
-    ctx.run(
-        tools.zensical.serve(dev_addr=f"{host}:{port}").add_args(*cli_args),
-        title="Serving documentation",
-        capture=False,
-    )
+#     Parameters:
+#         host: The host to serve the docs from.
+#         port: The port to serve the docs on.
+#     """
+#     ctx.run(
+#         tools.zensical.serve(dev_addr=f"{host}:{port}").add_args(*cli_args),
+#         title="Serving documentation",
+#         capture=False,
+#     )
 
 
-@duty
-def docs_deploy(ctx: Context) -> None:
-    """Deploy the documentation to GitHub pages."""
-    from ghp_import import ghp_import  # noqa: PLC0415
+# @duty
+# def docs_deploy(ctx: Context) -> None:
+#     """Deploy the documentation to GitHub pages."""
+#     from ghp_import import ghp_import  # noqa: PLC0415
 
-    ctx.run(tools.zensical.build(), title="Building documentation site")
-    ctx.run(
-        ghp_import,
-        kwargs={
-            "srcdir": "site",
-            "mesg": "chore: Update documentation",
-            "push": True,
-            "force": True,
-        },
-        title="Deploying site to GitHub Pages",
-        command="ghp-import site -fpm 'chore: Update documentation'",
-        pty=PTY,
-    )
+#     ctx.run(tools.zensical.build(), title="Building documentation site")
+#     ctx.run(
+#         ghp_import,
+#         kwargs={
+#             "srcdir": "site",
+#             "mesg": "chore: Update documentation",
+#             "push": True,
+#             "force": True,
+#         },
+#         title="Deploying site to GitHub Pages",
+#         command="ghp-import site -fpm 'chore: Update documentation'",
+#         pty=PTY,
+#     )
 
 
 @duty

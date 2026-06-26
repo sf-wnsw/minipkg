@@ -139,3 +139,28 @@ jobs:
         # - os: ubuntu-latest
         #   python-version: "3.12"
 ```
+
+### generation of HTML documentation
+
+It already starts to hurt to par down, and browsable doc is next to be removed. stuff or places to remove stuff from:
+
+* `docs` folder
+* `zensical.toml`
+* tasks in `duties.py`
+* perhaps in the `Makefile`, although it looks on Linux like removing from duties already removes the options from the command line `make` anyway
+* Now unnecessary dependencies in `pyproject.toml`
+
+`make test` now fails, but this may be expected as `zensical.toml` was removed.
+
+### various code quality checks
+
+placeholder
+
+### unit tests
+
+placeholder
+
+### versioning and changelog
+
+placeholder
+
