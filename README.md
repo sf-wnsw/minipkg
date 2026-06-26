@@ -210,8 +210,27 @@ Will fix this in the next commit.
 
 ### unit tests
 
+Getting closer to inner circles of Dante's hell, we are now stripping out the bits that support unit tests.
+
+We strip out the dependency on `pytest` in pyproject.toml. Remove test related files under `config` subfolder.
+
+we do `make setup` to update the local `.venv` environment, basically removing all the packages now not listed as optional dependencies by `tool.uv`, down to:
+
+```text
+[dependency-groups]
+maintain = [
+    "git-changelog>=2.5",
+    "twine>=5.1",
+    "yore>=0.3.3",
+]
+ci = [
+    "duty>=1.6",
+]
+
+[tool.uv]
+default-groups = ["maintain", "ci"]
+```
 
 ### versioning and changelog
 
-placeholder
-
+Actually, I think I will not remove this automation. It is handy if not without minor idiosyncracies and mishaps, but much better than manual (mis)management of version numbers.

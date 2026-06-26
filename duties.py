@@ -182,24 +182,24 @@ def release(ctx: Context, version: str = "") -> None:
     ctx.run("git push --tags", title="Pushing tags", pty=False)
 
 
-@duty(silent=True, aliases=["cov"])
-def coverage(ctx: Context) -> None:
-    """Report coverage as text and HTML."""
-    ctx.run(tools.coverage.combine(), nofail=True)
-    ctx.run(tools.coverage.report(rcfile="config/coverage.ini"), capture=False)
-    ctx.run(tools.coverage.html(rcfile="config/coverage.ini"))
+# @duty(silent=True, aliases=["cov"])
+# def coverage(ctx: Context) -> None:
+#     """Report coverage as text and HTML."""
+#     ctx.run(tools.coverage.combine(), nofail=True)
+#     ctx.run(tools.coverage.report(rcfile="config/coverage.ini"), capture=False)
+#     ctx.run(tools.coverage.html(rcfile="config/coverage.ini"))
 
 
-@duty(nofail=PY_VERSION == PY_DEV)
-def test(ctx: Context, *cli_args: str) -> None:
-    """Run the test suite."""
-    os.environ["COVERAGE_FILE"] = f".coverage.{PY_VERSION}"
-    os.environ["PYTHONWARNDEFAULTENCODING"] = "1"
-    ctx.run(
-        tools.pytest(
-            "tests",
-            config_file="config/pytest.ini",
-            color="yes",
-        ).add_args("-n", "auto", *cli_args),
-        title=pyprefix("Running tests"),
-    )
+# @duty(nofail=PY_VERSION == PY_DEV)
+# def test(ctx: Context, *cli_args: str) -> None:
+#     """Run the test suite."""
+#     os.environ["COVERAGE_FILE"] = f".coverage.{PY_VERSION}"
+#     os.environ["PYTHONWARNDEFAULTENCODING"] = "1"
+#     ctx.run(
+#         tools.pytest(
+#             "tests",
+#             config_file="config/pytest.ini",
+#             color="yes",
+#         ).add_args("-n", "auto", *cli_args),
+#         title=pyprefix("Running tests"),
+#     )
