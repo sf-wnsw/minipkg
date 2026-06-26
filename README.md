@@ -214,7 +214,6 @@ Getting closer to inner circles of Dante's hell, we are now stripping out the bi
 
 We strip out the dependency on `pytest` in pyproject.toml. Remove test related files under `config` subfolder.
 
-we do `make setup` to update the local `.venv` environment, basically removing all the packages now not listed as optional dependencies by `tool.uv`, down to:
 
 ```text
 [dependency-groups]
@@ -229,6 +228,16 @@ ci = [
 
 [tool.uv]
 default-groups = ["maintain", "ci"]
+```
+
+we do `make setup` to update the local `.venv` environment, basically removing all the packages now not listed as optional dependencies by `tool.uv`, down to:
+
+`make` tasks remaining:
+
+```text
+  build                 Build source and wheel distributions.
+  changelog             Update the changelog in-place with latest commits.
+  release               Release a new Python package.
 ```
 
 ### versioning and changelog
