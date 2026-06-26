@@ -240,6 +240,14 @@ we do `make setup` to update the local `.venv` environment, basically removing a
   release               Release a new Python package.
 ```
 
+```sh
+git commit -m "fix: forgot to commit pyproject"
+git status
+make changelog
+head CHANGELOG.md 
+make release version=0.4.1
+```
+
 ### versioning and changelog
 
 Actually, I think I will not remove this automation. It is handy if not without minor idiosyncracies and mishaps, but much better than manual (mis)management of version numbers.
