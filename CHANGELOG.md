@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
+## [0.4.1](https://github.com/sf-wnsw/minipkg/releases/tag/0.4.1) - 2026-06-26
+
+<small>[Compare with 0.4.0](https://github.com/sf-wnsw/minipkg/compare/0.4.0...0.4.1)</small>
+
+### Bug Fixes
+
+- forgot to commit pyproject ([61bb5ea](https://github.com/sf-wnsw/minipkg/commit/61bb5ea80d53945eb38be11d7286dfc7969c2596) by J-M).
+
 ## [0.4.0](https://github.com/sf-wnsw/minipkg/releases/tag/0.4.0) - 2026-06-26
 
 <small>[Compare with 0.3.0](https://github.com/sf-wnsw/minipkg/compare/0.3.0...0.4.0)</small>
