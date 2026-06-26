@@ -40,3 +40,28 @@ Various upcoming commits will strip down the following items, a priori. We will 
 
 `make test` pass, but only if I do `make run zensical build --clean` first.
 
+After pushing the repo to [sf-wnsw/minipkg](https://github.com/sf-wnsw/minipkg), the CI workflow run. The release workflow is skipped, perhaps a good thing but not sure why anymore. I always release from my machine. 
+
+The main CI takes a [bit of time to run](https://github.com/sf-wnsw/minipkg/actions/runs/28218942794), but this is because the default `ci.yml` file covers quite a matrix of versions and OS-es to run on. I typically pair it back to a subset in practice, uless I have very good reasons to check various versions. Note to self: pandas/numpy versions...
+
+I thought the `make` commands were mostly working on Unix systems, but the CI log suggests this works fine on windows, which I never tried first hand.
+
+At this point the docs are not yet deployed as a HTML github pages site. `make docs` runs fine with:
+
+```text
+Serving /home/per202/src/minipkg/site on http://127.0.0.1:8000
+Build started
+No issues found
+```
+
+and is browsable.
+
+`. .venv/bin/activate` then `uv pip list | less` confirms that `make setup` has installed the package in the locale env in "debug" mode:
+
+```text
+minipkg             0.1.dev2+g38cd3c7 /home/xxxxxx/src/minipkg
+```
+
+#### Version
+
+A neat if opinionated feature is the automatic version numbering and changelog management. We have changed a few things, let's uptick the version/changelog.
