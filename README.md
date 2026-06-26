@@ -202,14 +202,14 @@ Available tasks
 
 I also remove the `ruff.toml` and `ty.toml` files under config. Note that if we had run `make vscode`, we may have files under `.vscode` folder that would refer to these still.
 
-`make changelog`, and `make release version=0.2.0`
+Now `git add .`,  `git commit -m "feat: remove ruff and type quality checks"`,  `make changelog`, and `make release version=0.3.0`
 
-We are now at 
+We are now at https://github.com/sf-wnsw/minipkg/tree/2ad2cd5056510f6c899bab860f85887939fbbe07.  Note however that I overlooked removing bits from the `ci.yml` pipeline before releasing, so the CI fails. 
 
+Will fix this in the next commit.
 
 ### unit tests
 
-placeholder
 
 ### versioning and changelog
 
