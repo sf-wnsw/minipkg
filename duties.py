@@ -50,18 +50,18 @@ def changelog(ctx: Context, bump: str = "") -> None:
 
 
 # @duty(pre=["check-quality", "check-types", "check-docs", "check-api"])
-@duty(pre=["check-quality", "check-types", "check-api"])
-def check(ctx: Context) -> None:
-    """Check it all!"""
+# @duty(pre=["check-quality", "check-types", "check-api"])
+# def check(ctx: Context) -> None:
+#     """Check it all!"""
 
 
-@duty(nofail=PY_VERSION == PY_DEV)
-def check_quality(ctx: Context) -> None:
-    """Check the code quality."""
-    ctx.run(
-        tools.ruff.check(*PY_SRC_LIST, config="config/ruff.toml", color=True),
-        title=pyprefix("Checking code quality"),
-    )
+# @duty(nofail=PY_VERSION == PY_DEV)
+# def check_quality(ctx: Context) -> None:
+#     """Check the code quality."""
+#     ctx.run(
+#         tools.ruff.check(*PY_SRC_LIST, config="config/ruff.toml", color=True),
+#         title=pyprefix("Checking code quality"),
+#     )
 
 
 # @duty(nofail=PY_VERSION == PY_DEV)
@@ -73,29 +73,29 @@ def check_quality(ctx: Context) -> None:
 #     )
 
 
-@duty(nofail=PY_VERSION == PY_DEV)
-def check_types(ctx: Context) -> None:
-    """Check that the code is correctly typed."""
-    py = f"{sys.version_info.major}.{sys.version_info.minor}"
-    ctx.run(
-        tools.ty.check(
-            *PY_SRC_LIST,
-            config_file="config/ty.toml",
-            color=True,
-            python_version=py,
-        ),
-        title=pyprefix("Type-checking"),
-    )
+# @duty(nofail=PY_VERSION == PY_DEV)
+# def check_types(ctx: Context) -> None:
+#     """Check that the code is correctly typed."""
+#     py = f"{sys.version_info.major}.{sys.version_info.minor}"
+#     ctx.run(
+#         tools.ty.check(
+#             *PY_SRC_LIST,
+#             config_file="config/ty.toml",
+#             color=True,
+#             python_version=py,
+#         ),
+#         title=pyprefix("Type-checking"),
+#     )
 
 
-@duty(nofail=PY_VERSION == PY_DEV)
-def check_api(ctx: Context, *cli_args: str) -> None:
-    """Check for API breaking changes."""
-    ctx.run(
-        tools.griffe.check("minipkg", search=["src"], color=True).add_args(*cli_args),
-        title="Checking for API breaking changes",
-        nofail=True,
-    )
+# @duty(nofail=PY_VERSION == PY_DEV)
+# def check_api(ctx: Context, *cli_args: str) -> None:
+#     """Check for API breaking changes."""
+#     ctx.run(
+#         tools.griffe.check("minipkg", search=["src"], color=True).add_args(*cli_args),
+#         title="Checking for API breaking changes",
+#         nofail=True,
+#     )
 
 
 # @duty
@@ -133,14 +133,14 @@ def check_api(ctx: Context, *cli_args: str) -> None:
 #     )
 
 
-@duty
-def format(ctx: Context) -> None:
-    """Run formatting tools on the code."""
-    ctx.run(
-        tools.ruff.check(*PY_SRC_LIST, config="config/ruff.toml", fix_only=True, exit_zero=True),
-        title="Auto-fixing code",
-    )
-    ctx.run(tools.ruff.format(*PY_SRC_LIST, config="config/ruff.toml"), title="Formatting code")
+# @duty
+# def format(ctx: Context) -> None:
+#     """Run formatting tools on the code."""
+#     ctx.run(
+#         tools.ruff.check(*PY_SRC_LIST, config="config/ruff.toml", fix_only=True, exit_zero=True),
+#         title="Auto-fixing code",
+#     )
+#     ctx.run(tools.ruff.format(*PY_SRC_LIST, config="config/ruff.toml"), title="Formatting code")
 
 
 @duty

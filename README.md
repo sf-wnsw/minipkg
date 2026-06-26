@@ -152,9 +152,60 @@ It already starts to hurt to par down, and browsable doc is next to be removed. 
 
 `make test` now fails, but this may be expected as `zensical.toml` was removed.
 
+`make changelog`, and `make release version=0.2.0`
+
+We are now at   https://github.com/sf-wnsw/minipkg/tree/74e4f17e684bfd3852ae2c7b480973a7c9d6941d  
+
 ### various code quality checks
 
-placeholder
+Again, this hurts, but lets now excise `check-quality` and `check-types`. We remove dependency on:
+
+* ruff
+* ty
+* types-markdown
+* types-pyyaml
+* griffe (should have been removed in the docs above)
+
+so now in the pyproject file we are left with:
+
+```text
+[dependency-groups]
+maintain = [
+    "git-changelog>=2.5",
+    "twine>=5.1",
+    "yore>=0.3.3",
+]
+ci = [
+    "duty>=1.6",
+    "pytest>=8.2",
+    "pytest-cov>=5.0",
+    "pytest-randomly>=3.15",
+    "pytest-xdist>=3.6",
+]
+
+[tool.uv]
+default-groups = ["maintain", "ci"]
+```
+
+we do `make setup` to update the local `.venv` environment, basically removing all the packages now not listed as optional dependencies by `tool.uv`
+
+Now the remaining tasks are:
+
+```text
+Available tasks
+  build                 Build source and wheel distributions.
+  changelog             Update the changelog in-place with latest commits.
+  coverage              Report coverage as text and HTML.
+  release               Release a new Python package.
+  test                  Run the test suite.
+```
+
+I also remove the `ruff.toml` and `ty.toml` files under config. Note that if we had run `make vscode`, we may have files under `.vscode` folder that would refer to these still.
+
+`make changelog`, and `make release version=0.2.0`
+
+We are now at 
+
 
 ### unit tests
 
