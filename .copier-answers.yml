@@ -1,0 +1,19 @@
+# Changes here will be overwritten by Copier.
+_commit: 1.12.1
+_src_path: gh:pawamoy/copier-uv
+author_email: jean-michel.perraud@csiro.au
+author_fullname: J-M
+author_username: jmp75
+copyright_date: '2026'
+copyright_holder: CSIRO
+copyright_holder_email: jean-michel.perraud@csiro.au
+copyright_license: BSD-3-Clause-Clear
+project_description: Minimal packaging example with uv and pyproject.toml
+project_name: minipkg
+python_package_command_line_name: minipkg
+python_package_distribution_name: minipkg
+python_package_import_name: minipkg
+repository_name: minipkg
+repository_namespace: sf-wnsw
+repository_provider: github.com
+
