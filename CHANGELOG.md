@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
+## [0.5.0](https://github.com/sf-wnsw/minipkg/releases/tag/0.5.0) - 2026-06-26
+
+<small>[Compare with 0.4.1](https://github.com/sf-wnsw/minipkg/compare/0.4.1...0.5.0)</small>
+
+### Features
+
+- remove funding references and other unused features/url pointers ([aa6af06](https://github.com/sf-wnsw/minipkg/commit/aa6af0603760e7f2f84c9f6b55450ab3d1036de4) by J-M).
+
+### Bug Fixes
+
+- had forgotten to remove make test from ci.yml ([076213a](https://github.com/sf-wnsw/minipkg/commit/076213a249e7ed649e76168c7002d921a5520300) by J-M).
+
 ## [0.4.1](https://github.com/sf-wnsw/minipkg/releases/tag/0.4.1) - 2026-06-26
 
 <small>[Compare with 0.4.0](https://github.com/sf-wnsw/minipkg/compare/0.4.0...0.4.1)</small>
