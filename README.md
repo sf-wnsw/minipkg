@@ -65,3 +65,77 @@ minipkg             0.1.dev2+g38cd3c7 /home/xxxxxx/src/minipkg
 #### Version
 
 A neat if opinionated feature is the automatic version numbering and changelog management. We have changed a few things, let's uptick the version/changelog.
+
+**Caution** because I do not want to publish to pypi, I need to deactivate the publishing step in the file `duties.py` first.
+
+```python
+@duty(post=["build", "publish", "docs-deploy"])
+def release(ctx: Context, version: str = "") -> None:
+```
+
+```python
+
+# @duty
+# def publish(ctx: Context) -> None:
+#     """Publish source and wheel distributions to PyPI."""
+#     if not Path("dist").exists():
+#         ctx.run("false", title="No distribution files found")
+#     dists = [str(dist) for dist in Path("dist").iterdir() if dist.suffix in (".gz", ".whl")]
+#     ctx.run(
+#         tools.twine.upload(*dists, skip_existing=True),
+#         title="Publishing distributions to PyPI",
+#         pty=PTY,
+#     )
+
+
+@duty(post=["build", "docs-deploy"])
+def release(ctx: Context, version: str = "") -> None:
+```
+
+```sh
+make changelog
+head -n 30 CHANGELOG.md 
+```
+
+We can see the new version is 0.1.0. For good or de facto reasons, we need to manually pass this step to the release step which will finalise the release process.
+
+`make release version=0.1.0` which does:
+
+```text
+✓ Staging files
+✓ Committing changes
+✓ Tagging commit
+✓ Pushing commits
+✓ Pushing tags
+✓ Building distributions
+✓ Building documentation site
+✓ Deploying site to GitHub Pages
+```
+
+As expected and wanted, the step to push to pypi is not present.
+
+At this point, commit point https://github.com/sf-wnsw/minipkg/tree/d688cbb3fd50ebea57c383a5760bb1ff1159c22d.
+
+### Reduce the CI matrix
+
+For this project, no need to have combinatorial matrices of configs to test, so comment out in `ci.yml`
+
+```yaml
+jobs:
+
+  quality:
+    strategy:
+      matrix:
+        os:
+        - ubuntu-latest
+        # - macos-latest
+        # - windows-latest
+        python-version:
+        # - "3.10"
+        - "3.14"
+        # include:
+        # - os: ubuntu-latest
+        #   python-version: "3.11"
+        # - os: ubuntu-latest
+        #   python-version: "3.12"
+```
