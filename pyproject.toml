@@ -54,7 +54,6 @@ source-includes = [
     "config",
     "scripts",
     "share",
-    "tests",
     "duties.py",
     "*.md",
     "LICENSE",
